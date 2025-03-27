@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesticides - Farm Inputs & Service</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .product-img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Breadcrumb Navigation -->
+  <nav aria-label="breadcrumb" class="m-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Farm Inputs & Service</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Pesticides</li>
+    </ol>
+  </nav>
+
+  <div class="container py-4">
+    <h2 class="mb-4">Pesticides</h2>
+    <p>Select a pesticide category to view available varieties and details.</p>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="pesticideTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="herbicides-tab" data-bs-toggle="tab" data-bs-target="#herbicides" type="button" role="tab" aria-controls="herbicides" aria-selected="true">Herbicides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="fungicides-tab" data-bs-toggle="tab" data-bs-target="#fungicides" type="button" role="tab" aria-controls="fungicides" aria-selected="false">Fungicides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="insecticides-tab" data-bs-toggle="tab" data-bs-target="#insecticides" type="button" role="tab" aria-controls="insecticides" aria-selected="false">Insecticides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="rodenticides-tab" data-bs-toggle="tab" data-bs-target="#rodenticides" type="button" role="tab" aria-controls="rodenticides" aria-selected="false">Rodenticides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="bactericides-tab" data-bs-toggle="tab" data-bs-target="#bactericides" type="button" role="tab" aria-controls="bactericides" aria-selected="false">Bactericides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="molluscicides-tab" data-bs-toggle="tab" data-bs-target="#molluscicides" type="button" role="tab" aria-controls="molluscicides" aria-selected="false">Molluscicides</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="algaecide-tab" data-bs-toggle="tab" data-bs-target="#algaecide" type="button" role="tab" aria-controls="algaecide" aria-selected="false">Algaecide</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="organochlorines-tab" data-bs-toggle="tab" data-bs-target="#organochlorines" type="button" role="tab" aria-controls="organochlorines" aria-selected="false">Organochlorines</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="biolarvicides-tab" data-bs-toggle="tab" data-bs-target="#biolarvicides" type="button" role="tab" aria-controls="biolarvicides" aria-selected="false">Bio-larvicides</button>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-4" id="pesticideTabContent">
+      <!-- Herbicides Tab -->
+      <div class="tab-pane fade show active" id="herbicides" role="tabpanel" aria-labelledby="herbicides-tab">
+        <h4>Herbicides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Herbicide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/TWIGASATE-480SL.jpg" class="card-img-top product-img" alt="twiga">
+              <div class="card-body">
+                <h5 class="card-title">Herbicide Twiga</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> AgroChem<br>
+                  <strong>Quantity:</strong> 1L<br>
+                  <strong>Price:</strong> ksh 800<br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+      
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="800" data-product="Herbicide Twiga ">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Herbicide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Fungicides Tab -->
+      <div class="tab-pane fade" id="fungicides" role="tabpanel" aria-labelledby="fungicides-tab">
+        <h4>Fungicides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Fungicide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/fungicide1.jpg" class="card-img-top product-img" alt="Fungicide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Fungicide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> FungiGuard<br>
+                  <strong>Quantity:</strong> 500ml<br>
+                  <strong>Price:</strong> Ksh 1500<br>
+                  <strong>Availability:</strong> Limited
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="Ksh 1500" data-product="Fungicide Variety 1 ">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Fungicide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Insecticides Tab -->
+      <div class="tab-pane fade" id="insecticides" role="tabpanel" aria-labelledby="insecticides-tab">
+        <h4>Insecticides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Insecticide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/insecticide1.jpg" class="card-img-top product-img" alt="Insecticide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Insecticide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> BugBusters<br>
+                  <strong>Quantity:</strong> 750ml<br>
+                  <strong>Price:</strong> Ksh 900<br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="900" data-product="Insecticide Variety 1 ">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Insecticide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Rodenticides Tab -->
+      <div class="tab-pane fade" id="rodenticides" role="tabpanel" aria-labelledby="rodenticides-tab">
+        <h4>Rodenticides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Rodenticide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/rodenticide1.jpg" class="card-img-top product-img" alt="Rodenticide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Rodenticide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> RodentEx<br>
+                  <strong>Quantity:</strong> 1kg<br>
+                  <strong>Price:</strong>Ksh 1200 <br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="1200" data-product="Rodenticide Variety 1">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Rodenticide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Bactericides Tab -->
+      <div class="tab-pane fade" id="bactericides" role="tabpanel" aria-labelledby="bactericides-tab">
+        <h4>Bactericides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Bactericide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/bactericide1.jpg" class="card-img-top product-img" alt="Bactericide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Bactericide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> BioShield<br>
+                  <strong>Quantity:</strong> 500ml<br>
+                  <strong>Price:</strong>Ksh 500<br>
+                  <strong>Availability:</strong> Limited
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="500" data-product="Bactericide Variety 1">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Bactericide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Molluscicides Tab -->
+      <div class="tab-pane fade" id="molluscicides" role="tabpanel" aria-labelledby="molluscicides-tab">
+        <h4>Molluscicides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Molluscicide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/molluscicide1.jpg" class="card-img-top product-img" alt="Molluscicide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Molluscicide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> ShellStop<br>
+                  <strong>Quantity:</strong> 1L<br>
+                  <strong>Price:</strong> Ksh 1800<br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="1800" data-product="Molluscicide Variety 1 ">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Molluscicide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Algaecide Tab -->
+      <div class="tab-pane fade" id="algaecide" role="tabpanel" aria-labelledby="algaecide-tab">
+        <h4>Algaecide Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Algaecide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/algaecide1.jpg" class="card-img-top product-img" alt="Algaecide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Algaecide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> AquaClear<br>
+                  <strong>Quantity:</strong> 1L<br>
+                  <strong>Price:</strong> Ksh 650<br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="650" data-product="Algaecide Variety 1">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Algaecide cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Organochlorines Tab -->
+      <div class="tab-pane fade" id="organochlorines" role="tabpanel" aria-labelledby="organochlorines-tab">
+        <h4>Organochlorines Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Organochlorine Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/organochlorine1.jpg" class="card-img-top product-img" alt="Organochlorine Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Organochlorine Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> ChloroTech<br>
+                  <strong>Quantity:</strong> 2L<br>
+                  <strong>Price:</strong>Ksh 1000<br>
+                  <strong>Availability:</strong> Limited
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="1000" data-product="Organochlorine Variety 1">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Organochlorine cards can be added here -->
+        </div>
+      </div>
+
+      <!-- Bio-larvicides Tab -->
+      <div class="tab-pane fade" id="biolarvicides" role="tabpanel" aria-labelledby="biolarvicides-tab">
+        <h4>Bio-larvicides Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Sample Bio-larvicide Card -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="path/to/biolarvicide1.jpg" class="card-img-top product-img" alt="Bio-larvicide Variety 1">
+              <div class="card-body">
+                <h5 class="card-title">Bio-larvicide Variety 1</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> BioGuard<br>
+                  <strong>Quantity:</strong> 1L<br>
+                  <strong>Price:</strong> Ksh 450<br>
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success pay-mpesa" data-amount="450" data-product="Bio-larvicide Variety 1 ">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Bio-larvicide cards can be added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="mpesaModal" tabindex="-1" aria-labelledby="mpesaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mpesaModalLabel">MPesa Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Please enter your phone number to proceed with the payment:</p>
+          <input type="tel" id="mpesaPhone" class="form-control" placeholder="e.g. 254712345678">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="mpesaSubmit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2023 Mwea Farming Expert Chatbot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- MPesa Payment Modal -->
+
+
+
+ <!-- MPesa Payment Script -->
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const mpesaButtons = document.querySelectorAll('.pay-mpesa');
+    let paymentAmount = 0;
+    let paymentProduct = '';
+
+    // When a user clicks any "Pay using Mpesa" button, open the modal.
+    mpesaButtons.forEach(btn => {
+      btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        paymentAmount = this.getAttribute('data-amount');
+        paymentProduct = this.getAttribute('data-product');
+        // Show the MPesa modal
+        var mpesaModal = new bootstrap.Modal(document.getElementById('mpesaModal'));
+        mpesaModal.show();
+      });
+    });
+
+    // Handle modal submission
+    document.getElementById('mpesaSubmit').addEventListener('click', async function() {
+      const phone = document.getElementById('mpesaPhone').value.trim();
+      if (!phone) {
+        alert("Please enter your phone number");
+        return;
+      }
+      const payload = {
+        phone: phone,
+        amount: paymentAmount,
+        product: paymentProduct
+      };
+      try {
+        const response = await fetch('/mpesa_payment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+        if (response.ok) {
+          alert("Payment request sent! Please check your phone to enter your PIN.");
+        } else {
+          alert("Payment error: " + data.error);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while processing your payment.");
+      }
+      // Hide the modal after processing
+      var mpesaModal = bootstrap.Modal.getInstance(document.getElementById('mpesaModal'));
+      mpesaModal.hide();
+    });
+  });
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crop Production - Agronomist Advice</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Hero Section Styling */
+    .hero {
+     
+      background: url('static/images/crop_production.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    /* Floating Chat Widget Styling */
+    #floatingChat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      z-index: 10000;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      display: none; /* Hidden by default */
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    #floatingChatHeader {
+      background-color: #007bff;
+      color: white;
+      padding: 0.75rem;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+    #floatingChatBody {
+      padding: 0.75rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    #floatingChatFooter {
+      padding: 0.75rem;
+      border-top: 1px solid #ced4da;
+    }
+    .floating-message {
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .floating-message.user {
+      align-items: flex-end;
+    }
+    .floating-bubble {
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      max-width: 80%;
+      word-break: break-word;
+    }
+    .floating-message.user .floating-bubble {
+      background-color: #007bff;
+      color: white;
+    }
+    .floating-message.bot .floating-bubble {
+      background-color: #f1f0f0;
+      color: #333;
+    }
+    /* Additional content styling */
+    .content-section {
+      padding: 2rem 0;
+    }
+    .resource-card img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+        <a class="navbar-brand" href="#">Mwea Farming Expert Chatbot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Agronomist</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container my-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Agronomist</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Crop Production</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="display-4">Crop Production</h1>
+      <p class="lead">Maximize your yields with expert crop production strategies.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container content-section">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>Expert Advice on Crop Production</h2>
+        <p>
+          Our certified agronomists provide comprehensive guidance on all aspects of crop production—from selecting the best crop varieties,
+          soil preparation, fertilization, irrigation, to harvesting techniques. Explore our expert advice below.
+        </p>
+        <h3>Recommended Products</h3>
+        <ul>
+          <li><a href="/fertilizers">Premium Fertilizers</a> to boost soil fertility.</li>
+          <li><a href="/seedlings">High-Quality Seedlings</a> for improved crop performance.</li>
+          <!-- Additional recommended products -->
+        </ul>
+      </div>
+      
+      <div class="col-lg-4">
+        <!-- Direct Q&A with Certified Agronomist -->
+        <div class="card shadow">
+          <div class="card-header bg-info text-white">
+            Ask a Certified Agronomist
+          </div>
+          <div class="card-body">
+            <div id="agroChatBody" class="mb-3" style="max-height: 250px; overflow-y: auto;">
+              <!-- Q&A messages appended here -->
+            </div>
+            <form id="agroChatForm">
+              <div class="input-group">
+                <input type="text" id="agroUserInput" class="form-control" placeholder="Type your question..." required>
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Direct Q&A Section -->
+<section id="directQA" class="py-5 bg-light">
+    <div class="container">
+      <h2>Ask a Certified Agronomist</h2>
+      <!-- Question Submission Form -->
+      <form id="questionForm">
+        <div class="mb-3">
+          <label for="userName" class="form-label">Your Name (optional)</label>
+          <input type="text" class="form-control" id="userName" placeholder="Enter your name">
+        </div>
+        <div class="mb-3">
+          <label for="questionText" class="form-label">Your Question</label>
+          <textarea class="form-control" id="questionText" rows="3" placeholder="Type your question here" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Question</button>
+      </form>
+  
+      <!-- Display Q&A -->
+      <div id="qaList" class="mt-5">
+        <!-- Questions and replies will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Expert Resources & Documents -->
+  <div class="container content-section">
+    <h2>Expert Resources & Documents</h2>
+    <p>Below are some documents and images posted by our agronomists to help you optimize your crop production.</p>
+    <div class="row">
+      <!-- Resource Card Example -->
+      <div class="col-md-4">
+        <div class="card resource-card mb-4 shadow-sm">
+          <img src="static/images/Harvestrer2.jpg" class="card-img-top" alt="Crop Production Guide">
+          <div class="card-body">
+            <h5 class="card-title">Crop Production Guide</h5>
+            <p class="card-text">A comprehensive guide on crop production best practices.</p>
+            <a href="static/documents/crop_production_guide.pdf" class="btn btn-outline-primary btn-sm" target="_blank">View PDF</a>
+          </div>
+        </div>
+      </div>
+      <!-- Additional resource cards as needed -->
+    </div>
+  </div>
+
+  <!-- Floating Chat Widget -->
+ <!-- Floating Chat Widget -->
+<div id="floatingChat" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 300px; background: #fff; border: 1px solid #ced4da; border-radius: 4px; box-shadow: 0 0 10px rgba(0,0,0,0.15); z-index: 10000;">
+    <div id="floatingChatHeader" class="d-flex justify-content-between align-items-center bg-primary text-white p-2" style="border-top-left-radius: 4px; border-top-right-radius: 4px;">
+      <span>Ask an Expert</span>
+      <button id="floatingChatClose" class="btn btn-sm btn-link text-white p-0" style="font-size: 20px;">&times;</button>
+    </div>
+    <div id="floatingChatBody" style="padding: 10px; max-height: 300px; overflow-y: auto;"></div>
+    <div id="floatingChatFooter" class="p-2 border-top">
+      <div class="input-group">
+        <input type="text" id="floatingUserInput" class="form-control" placeholder="Type your message...">
+        <button id="floatingSendBtn" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2023 Mwea Farming Expert Chatbot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Agronomist Q&A Chat Script -->
+  <script>
+    // Inline agronomist chat (for direct Q&A)
+    const agroChatBody = document.getElementById("agroChatBody");
+    const agroUserInput = document.getElementById("agroUserInput");
+    const agroChatForm = document.getElementById("agroChatForm");
+
+    function appendAgroMessage(role, text) {
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("mb-2", role === "user" ? "text-end" : "text-start");
+      const bubble = document.createElement("div");
+      bubble.classList.add("d-inline-block", "p-2", "rounded", role === "user" ? "bg-primary text-white" : "bg-light text-dark");
+      bubble.textContent = text;
+      messageDiv.appendChild(bubble);
+      agroChatBody.appendChild(messageDiv);
+      agroChatBody.scrollTop = agroChatBody.scrollHeight;
+    }
+
+    agroChatForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const question = agroUserInput.value.trim();
+      if (!question) return;
+      appendAgroMessage("user", question);
+      agroUserInput.value = "";
+      // Replace with a real API call if needed; here we simulate a response:
+      setTimeout(() => {
+        appendAgroMessage("bot", "Thank you for your question. Our certified agronomist will get back to you shortly.");
+      }, 1000);
+    });
+
+    // Floating Chat Widget functions (for API-based chatbot, same as in dashboard)
+    // Get widget elements
+  const floatingChat = document.getElementById("floatingChat");
+  const floatingChatBody = document.getElementById("floatingChatBody");
+  const floatingUserInput = document.getElementById("floatingUserInput");
+  const floatingSendBtn = document.getElementById("floatingSendBtn");
+  const floatingChatClose = document.getElementById("floatingChatClose");
+
+  // Function to append messages to the widget
+  function appendFloatingMessage(role, text) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("mb-2");
+    messageDiv.style.textAlign = role === "user" ? "right" : "left";
+    
+    const bubble = document.createElement("div");
+    bubble.classList.add("d-inline-block", "p-2", "rounded");
+    bubble.style.maxWidth = "80%";
+    bubble.style.wordBreak = "break-word";
+    if (role === "user") {
+      bubble.style.backgroundColor = "#007bff";
+      bubble.style.color = "#fff";
+    } else {
+      bubble.style.backgroundColor = "#f1f0f0";
+      bubble.style.color = "#333";
+    }
+    
+    bubble.textContent = text;
+    messageDiv.appendChild(bubble);
+    floatingChatBody.appendChild(messageDiv);
+    // Auto-scroll to the bottom
+    floatingChatBody.scrollTop = floatingChatBody.scrollHeight;
+  }
+
+  // Function to send a message using the /chat endpoint
+  async function sendFloatingMessage() {
+    const message = floatingUserInput.value.trim();
+    if (!message) return;
+    appendFloatingMessage("user", message);
+    floatingUserInput.value = "";
+    try {
+      const response = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      });
+      const data = await response.json();
+      appendFloatingMessage("bot", data.reply);
+    } catch (error) {
+      console.error("Error:", error);
+      appendFloatingMessage("bot", "An error occurred. Please try again later.");
+    }
+  }
+
+  // Event listeners for the widget
+  floatingSendBtn.addEventListener("click", sendFloatingMessage);
+  floatingUserInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      sendFloatingMessage();
+    }
+  });
+  floatingChatClose.addEventListener("click", function() {
+    floatingChat.style.display = "none";
+  });
+
+    // Show floating chat widget after a delay (e.g., 3 seconds)
+    window.addEventListener("load", function() {
+      setTimeout(() => {
+        floatingChat.style.display = "block";
+      }, 3000);
+    });
+
+    closeChat.addEventListener("click", function() {
+      floatingChat.style.display = "none";
+    });
+
+      // Function to fetch and display questions
+    async function fetchQuestions() {
+    try {
+      const response = await fetch('/get_questions');
+      const questions = await response.json();
+      const qaList = document.getElementById("qaList");
+      qaList.innerHTML = ""; // Clear current list
+
+      questions.forEach(q => {
+        const qDiv = document.createElement("div");
+        qDiv.classList.add("card", "mb-3");
+        qDiv.innerHTML = `
+          <div class="card-body">
+            <h5 class="card-title">Question from ${q.user_name}</h5>
+            <p class="card-text">${q.question}</p>
+            ${q.reply ? `<div class="alert alert-success" role="alert"><strong>Reply:</strong> ${q.reply}</div>` : `<div class="alert alert-warning" role="alert">No reply yet.</div>`}
+            ${q.document_url ? `<a href="${q.document_url}" target="_blank" class="btn btn-link">View Attached Document</a>` : ""}
+            ${q.image_url ? `<img src="${q.image_url}" class="img-fluid mt-2" alt="Resource Image">` : ""}
+          </div>
+        `;
+        qaList.appendChild(qDiv);
+      });
+    } catch (error) {
+      console.error("Error fetching questions:", error);
+    }
+  }
+
+  // Submit question form handling
+  const questionForm = document.getElementById("questionForm");
+  questionForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const userName = document.getElementById("userName").value.trim();
+    const questionText = document.getElementById("questionText").value.trim();
+    if (!questionText) return;
+    const payload = {
+      user_name: userName,
+      question: questionText
+    };
+    try {
+      const response = await fetch('/submit_question', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert("Your question has been submitted.");
+        questionForm.reset();
+        fetchQuestions(); // Refresh the Q&A list
+      } else {
+        alert("Error: " + data.error);
+      }
+    } catch (error) {
+      console.error("Error submitting question:", error);
+      alert("An error occurred. Please try again later.");
+    }
+  });
+
+  // Initially fetch questions on page load
+  window.addEventListener("load", fetchQuestions);
+
+
+
+
+  </script>
+</body>
+</html>

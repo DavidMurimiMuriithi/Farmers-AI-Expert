@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mwea Farming Expert Chatbot 🌾, 🍅, 🍎🍑🍒🍌🌽🍆</title>
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+        <a class="navbar-brand" href="#">Mwea Farming Expert Chatbot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <!-- Farm Inputs & Services Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="farmInputsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Farm Inputs & Services
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="farmInputsDropdown">
+                <li><a class="dropdown-item" href="/fertilizers">Fertilizers</a></li>
+                <li><a class="dropdown-item" href="/seedlings">Seedlings</a></li>
+                <li><a class="dropdown-item" href="/pesticides">Pesticides</a></li>
+                <li><a class="dropdown-item" href="/chemicals">Chemicals</a></li>
+                <li><a class="dropdown-item" href="/rotavation">Rotavation</a></li>
+                <li><a class="dropdown-item" href="/harvesting">Harvesting</a></li>
+                <li><a class="dropdown-item" href="/soil_tests">Soil Tests</a></li>
+                <li><a class="dropdown-item" href="/transport">Transport</a></li>
+              </ul>
+            </li>
+            <!-- Farm Tools Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="farmToolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Farm Tools
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="farmToolsDropdown">
+                <li><a class="dropdown-item" href="/garden_tools">Garden Tools & Equipment</a></li>
+                <li><a class="dropdown-item" href="/workshop_tools">Workshop Tools & Equipment</a></li>
+                <li><a class="dropdown-item" href="/livestock_tools">Livestock Production Tools & Equipment</a></li>
+                <li><a class="dropdown-item" href="/masonry_tools">Masonry Tools & Equipment</a></li>
+                <li><a class="dropdown-item" href="/plumbing_tools">Plumbing Tools & Equipment</a></li>
+              </ul>
+            </li>
+            <!-- Agronomist Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="agronomistDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Agronomist
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="agronomistDropdown">
+                <li><a class="dropdown-item" href="/crop_production">Crop Production</a></li>
+                <li><a class="dropdown-item" href="/soil_management">Soil Management</a></li>
+                <li><a class="dropdown-item" href="/environmental_sustainability">Environmental Sustainability</a></li>
+                <li><a class="dropdown-item" href="/crop_yield">Crop Yield</a></li>
+                <li><a class="dropdown-item" href="/crop_diseases">Crop Diseases</a></li>
+                <li><a class="dropdown-item" href="/crop_cultivation">Crop Cultivation</a></li>
+                <li><a class="dropdown-item" href="/pest_weed_management">Pest & Weed Management</a></li>
+                <li><a class="dropdown-item" href="/climate_sensitivity">Climate Sensitivity</a></li>
+                <li><a class="dropdown-item" href="/soil_sensitivity">Soil Sensitivity</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Water Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+            <a href="/agronomist_dashboard">High-Quality Seedlings</a> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Carousel -->
+  <section id="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='images/White farmer spraying.jpg') }}" class="d-block w-100" alt="Sustainable Farming Practices">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Sustainable Farming Practices</h2>
+            <p>Protecting our environment through responsible agricultural methods.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/Rice plant image.jpg') }}" class="d-block w-100" alt="Rice Cultivation">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Rice Cultivation</h2>
+            <p>Cultivating high-yielding and resilient rice varieties.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/Tomatoes image plant.jpg') }}" class="d-block w-100" alt="Tomato Farming">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Tomato Farming</h2>
+            <p>Growing healthy and delicious tomatoes for a thriving market.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">About Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Farm Products</h3>
+                <p>Explore a wide range of fresh and locally sourced farm products.</p>
+            </div>
+            <div class="card">
+                <h3>Farm Inputs</h3>
+                <p>Find all the necessary inputs for successful farming, from seeds to fertilizers.</p>
+            </div>
+            <div class="card">
+                <h3>Agronomist Advice</h3>
+                <p>Get expert guidance from our experienced agronomists.</p>
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Testimonials</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"Excellent service! The chatbot was very helpful in answering my questions about crop rotation."</p>
+              <footer class="blockquote-footer">John Doe</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"I learned a lot about pest control thanks to the chatbot. Highly recommended!"</p>
+              <footer class="blockquote-footer">Jane Smith</footer>
+            </blockquote>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot Section -->
+  <section id="chatbot" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4">Ask an Expert</h2>
+      <div class="card">
+        <div class="card-header">
+          Chat with our knowledgeable experts for personalized advice.
+        </div>
+        <div class="card-body" id="chatBody" style="max-height: 300px; overflow-y: auto;">
+          <!-- Chat messages will be appended here -->
+        </div>
+        <div class="card-footer">
+          <div class="input-group">
+            <input type="text" id="userInput" class="form-control" placeholder="Type your message...">
+            <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Contact Us</h2>
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Name">
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2023 Mwea Farming Expert Chatbot</p>
+      <div class="social-media-icons mt-2">
+        <a href="https://www.facebook.com/your_facebook_page" target="_blank" class="text-white me-2">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.twitter.com/your_twitter_handle" target="_blank" class="text-white me-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/your_instagram_handle" target="_blank" class="text-white">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Chatbot Script -->
+  <script>
+    const chatBody = document.getElementById("chatBody");
+    const userInput = document.getElementById("userInput");
+
+    function appendMessage(role, text) {
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", role);
+
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      bubble.textContent = text;
+
+      messageDiv.appendChild(bubble);
+      chatBody.appendChild(messageDiv);
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const userMessage = userInput.value.trim();
+      if (!userMessage) return;
+
+      appendMessage("user", userMessage);
+      userInput.value = "";
+
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: userMessage })
+        });
+
+        const data = await response.json();
+        appendMessage("bot", data.reply);
+      } catch (error) {
+        console.error("Error:", error);
+        appendMessage("bot", "An error occurred. Please try again later.");
+      }
+    }
+  </script>
+
+</body>
+</html>

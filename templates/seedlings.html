@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seedlings - Farm Inputs & Service</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-img {
+      max-height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Breadcrumb Navigation -->
+  <nav aria-label="breadcrumb" class="m-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Farm Inputs & Service</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Seedlings</li>
+    </ol>
+  </nav>
+
+  <div class="container py-4">
+    <h2 class="mb-4">Seedlings</h2>
+    <p>Select a seedling type to view available varieties and details.</p>
+    
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="seedlingTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="rice-tab" data-bs-toggle="tab" data-bs-target="#rice" type="button" role="tab" aria-controls="rice" aria-selected="true">Rice</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="oranges-tab" data-bs-toggle="tab" data-bs-target="#oranges" type="button" role="tab" aria-controls="oranges" aria-selected="false">Oranges</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="maize-tab" data-bs-toggle="tab" data-bs-target="#maize" type="button" role="tab" aria-controls="maize" aria-selected="false">Maize</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tomatoes-tab" data-bs-toggle="tab" data-bs-target="#tomatoes" type="button" role="tab" aria-controls="tomatoes" aria-selected="false">Tomatoes</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="cowpeas-tab" data-bs-toggle="tab" data-bs-target="#cowpeas" type="button" role="tab" aria-controls="cowpeas" aria-selected="false">Cowpeas</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sorghum-tab" data-bs-toggle="tab" data-bs-target="#sorghum" type="button" role="tab" aria-controls="sorghum" aria-selected="false">Sorghum</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="potatoes-tab" data-bs-toggle="tab" data-bs-target="#potatoes" type="button" role="tab" aria-controls="potatoes" aria-selected="false">Potatoes</button>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content mt-4" id="seedlingTabContent">
+      <!-- Rice Tab -->
+      <div class="tab-pane fade show active" id="rice" role="tabpanel" aria-labelledby="rice-tab">
+        <h4>Rice Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Rice Variety: Pishori Rice -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/Pishori seedlings.jpg" class="card-img-top product-img" alt="Pishori Rice Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Pishori Rice</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Rice Co.<br />
+                  <strong>Quantity:</strong> 100 seedlings<br />
+                  <strong>Price:</strong> $5<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <!-- MPesa payment button -->
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="5" data-product="Pishori Rice">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Rice Variety: Komboka Rice -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/Komboka seedlings.jpg" class="card-img-top product-img" alt="Komboka Rice Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Komboka Rice</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Rice Co.<br />
+                  <strong>Quantity:</strong> 120 seedlings<br />
+                  <strong>Price:</strong> $6<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="6" data-product="Komboka Rice">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Rice Variety: Sindano Rice -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/sindano seedlings.jpg" class="card-img-top product-img" alt="Sindano Rice Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Sindano Rice</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Rice Co.<br />
+                  <strong>Quantity:</strong> 90 seedlings<br />
+                  <strong>Price:</strong> $5.50<br />
+                  <strong>Availability:</strong> Limited
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="5.50" data-product="Sindano Rice">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Rice Variety: 512 Rice -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/Rice 512 seedlings.jpg" class="card-img-top product-img" alt="512 Rice Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">512 Rice</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Rice Co.<br />
+                  <strong>Quantity:</strong> 110 seedlings<br />
+                  <strong>Price:</strong> $6.50<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="6.50" data-product="512 Rice">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oranges Tab -->
+      <div class="tab-pane fade" id="oranges" role="tabpanel" aria-labelledby="oranges-tab">
+        <h4>Oranges Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Valencia Orange -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/Valencia orange2.jpg" class="card-img-top product-img" alt="Valencia Orange Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Valencia Orange</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Citrus Inc.<br />
+                  <strong>Quantity:</strong> 150 seedlings<br />
+                  <strong>Price:</strong> Ksh1000<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="1000" data-product="Valencia Orange">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional orange varieties can be added here -->
+        </div>
+      </div>
+
+      <!-- Maize Tab -->
+      <div class="tab-pane fade" id="maize" role="tabpanel" aria-labelledby="maize-tab">
+        <h4>Maize Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Maize -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/maize.jpg" class="card-img-top product-img" alt="Maize Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Maize</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Grain Co.<br />
+                  <strong>Quantity:</strong> 200 seedlings<br />
+                  <strong>Price:</strong> $3<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="3" data-product="Maize">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional maize varieties can be added here -->
+        </div>
+      </div>
+
+      <!-- Tomatoes Tab -->
+      <div class="tab-pane fade" id="tomatoes" role="tabpanel" aria-labelledby="tomatoes-tab">
+        <h4>Tomatoes Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Tomato -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/tomatoes.jpg" class="card-img-top product-img" alt="Tomato Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Tomato</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Veggie Co.<br />
+                  <strong>Quantity:</strong> 180 seedlings<br />
+                  <strong>Price:</strong> $3.50<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="3.50" data-product="Tomato">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional tomato varieties can be added here -->
+        </div>
+      </div>
+
+      <!-- Cowpeas Tab -->
+      <div class="tab-pane fade" id="cowpeas" role="tabpanel" aria-labelledby="cowpeas-tab">
+        <h4>Cowpeas Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Cowpeas -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/cowpeas.jpg" class="card-img-top product-img" alt="Cowpea Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Cowpeas</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Legume Co.<br />
+                  <strong>Quantity:</strong> 160 seedlings<br />
+                  <strong>Price:</strong> $4<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="4" data-product="Cowpeas">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional cowpeas varieties can be added here -->
+        </div>
+      </div>
+
+      <!-- Sorghum Tab -->
+      <div class="tab-pane fade" id="sorghum" role="tabpanel" aria-labelledby="sorghum-tab">
+        <h4>Sorghum Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Sorghum -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/sorghum.jpg" class="card-img-top product-img" alt="Sorghum Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Sorghum</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Grain Co.<br />
+                  <strong>Quantity:</strong> 140 seedlings<br />
+                  <strong>Price:</strong> $3.20<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="3.20" data-product="Sorghum">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional sorghum varieties can be added here -->
+        </div>
+      </div>
+
+      <!-- Potatoes Tab -->
+      <div class="tab-pane fade" id="potatoes" role="tabpanel" aria-labelledby="potatoes-tab">
+        <h4>Potatoes Varieties</h4>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Example: Potato -->
+          <div class="col">
+            <div class="card h-100">
+              <img src="static/images/potatoes.jpg" class="card-img-top product-img" alt="Potato Seedling" />
+              <div class="card-body">
+                <h5 class="card-title">Potato</h5>
+                <p class="card-text">
+                  <strong>Manufacturer:</strong> Spud Co.<br />
+                  <strong>Quantity:</strong> 130 seedlings<br />
+                  <strong>Price:</strong> $2.50<br />
+                  <strong>Availability:</strong> In Stock
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="btn btn-primary btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm pay-mpesa" data-amount="2.50" data-product="Potato">Pay using Mpesa</a>
+              </div>
+            </div>
+          </div>
+          <!-- Additional potato varieties can be added here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MPesa Payment Modal -->
+  <div class="modal fade" id="mpesaModal" tabindex="-1" aria-labelledby="mpesaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mpesaModalLabel">MPesa Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Please enter your phone number to proceed with the payment:</p>
+          <input type="tel" id="mpesaPhone" class="form-control" placeholder="e.g. 254712345678">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="mpesaSubmit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <p class="mb-0">&copy; 2023 Mwea Farming Expert Chatbot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- MPesa Payment Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const mpesaButtons = document.querySelectorAll('.pay-mpesa');
+      let paymentAmount = 0;
+      let paymentProduct = '';
+
+      // When a user clicks any "Pay using Mpesa" button, open the modal.
+      mpesaButtons.forEach(btn => {
+        btn.addEventListener('click', function(event) {
+          event.preventDefault();
+          paymentAmount = this.getAttribute('data-amount');
+          paymentProduct = this.getAttribute('data-product');
+          // Show the MPesa modal
+          var mpesaModal = new bootstrap.Modal(document.getElementById('mpesaModal'));
+          mpesaModal.show();
+        });
+      });
+
+      // Handle modal submission
+      document.getElementById('mpesaSubmit').addEventListener('click', async function() {
+        const phone = document.getElementById('mpesaPhone').value.trim();
+        if (!phone) {
+          alert("Please enter your phone number");
+          return;
+        }
+        const payload = {
+          phone: phone,
+          amount: paymentAmount,
+          product: paymentProduct
+        };
+        try {
+          const response = await fetch('/mpesa_payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+          if (response.ok) {
+            alert("Payment request sent! Please check your phone to enter your PIN.");
+          } else {
+            alert("Payment error: " + data.error);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("An error occurred while processing your payment.");
+        }
+        // Hide the modal after processing
+        var mpesaModal = bootstrap.Modal.getInstance(document.getElementById('mpesaModal'));
+        mpesaModal.hide();
+      });
+    });
+  </script>
+</body>
+</html>
