@@ -24,7 +24,7 @@ with app.app_context():
     db.create_all()
 
 # Set up the Google Generative AI
-MY_API_KEY = "AIzaSyBRNB608Zzk9tWbliR2LbKoOegfJ_HAHO0"  # Replace with your actual API key
+MY_API_KEY = ""  # Replace with your actual API key
 genai.configure(api_key=MY_API_KEY)
 
 # Configure the model
