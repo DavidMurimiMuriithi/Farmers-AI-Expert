@@ -6,13 +6,13 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 # Configure Gemini API
-GEMINI_API_KEY = 'AIzaSyBRNB608Zzk9tWbliR2LbKoOegfJ_HAHO0'
+GEMINI_API_KEY = ''
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 # Infobip API credentials
-INFOBIP_API_KEY = 'ccc35b8bd58ff413e6eef99c0ac55c1f-5f5ecc86-72de-41fc-81f5-06c0928a4c8c'
-INFOBIP_BASE_URL = 'rgekxm.api.infobip.com'  # Replace with your Infobip base URL
+INFOBIP_API_KEY = ''
+INFOBIP_BASE_URL = ''  # Replace with your Infobip base URL
 INFOBIP_WHATSAPP_NUMBER = ''  # Your Infobip WhatsApp number
 
 # Infobip Webhook for WhatsApp
