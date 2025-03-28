@@ -7,10 +7,10 @@ import requests
 mpesa_bp = Blueprint('mpesa', __name__)
 
 # Configuration - replace with your actual credentials
-CONSUMER_KEY = "YxOXsJGNYqGasHB8JfrHWSxRbab6pGPkbl3jUzoecRmeAcWd"
-CONSUMER_SECRET = "hwzSZndr4NnsunIoZRy08LJGyb3GqPUzMdaIPeN4IjryVMyndxO8Vc752cd3aEKK"
+CONSUMER_KEY = ""
+CONSUMER_SECRET = ""
 BUSINESS_SHORTCODE = "174379"  # e.g., "174379" for sandbox
-PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
+PASSKEY = ""
 CALLBACK_URL = "https://yourdomain.com/callback"  # Replace with your callback URL
 
 def get_access_token():
